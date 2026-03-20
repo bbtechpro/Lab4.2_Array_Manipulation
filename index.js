@@ -2,7 +2,9 @@ let shoppingList = [];
 
 
 function addItem(item) {
-    shoppingList.push(item)
+    if (!shoppingList.includes(item)) {
+        shoppingList.push(item);
+    }
 }
 addItem("orange juice")
 addItem("bread")
@@ -13,8 +15,18 @@ function removeLastItem() {
 }
 removeLastItem()
 
+function filterItems(searchTerm) {
+    const term = searchTerm.toLowerCase();
+    return shoppingList.filter(item => item.toLowerCase().includes(term));
+}
+
 function displayList() {
     console.log(shoppingList.join(", "))
 }
 
 displayList()
+
+// Example filter call (uncomment to test)
+console.log(filterItems('rea')) // e.g. returns ['bread']
+
+
